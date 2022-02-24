@@ -1,0 +1,19 @@
+{
+  "name": "houdini",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@polvtypes/reveal.js": "^3.8.1",
+    "@types/reveal": "^4.2.0",
+    "prettier": "^2.5.1",
+    "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "reveal.js": "^4.2.1"
+  }
+}

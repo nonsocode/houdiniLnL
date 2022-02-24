@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Houdini</title>
+  </head>
+
+  <body class="reveal-viewport">
+    <div id="app" class="reveal">
+      <div class="slides">
+        <section>
+          <h1>CSS Houdini</h1>
+          <small>by Nonso Chukwuogor</small>
+          <aside class="notes">Shhh, these are your private notes 📝</aside>
+        </section>
+
+        <section>
+          <h2>What is CSS Houdini</h2>
+          <blockquote class="fragment">
+            A collection of browser APIs, aims to bring significant improvements
+            to the web development process and the development of CSS standards
+            in general
+          </blockquote>
+        </section>
+
+        <section
+          data-background-iframe="https://ishoudinireadyyet.com/"
+        ></section>
+
+        <section
+          data-auto-animate
+          data-background-image="/typed_vs_untyped.png"
+        >
+          <h2>Typed CSSOM</h2>
+          <div class="r-stretch"></div>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Typed CSSOM</h2>
+          <div class="r-stretch">
+            <p>Current CSSOM</p>
+            <pre>
+              <code  data-trim data-noescape class="language-javascript">
+                // Untyped Element styles.
+                el.style.opacity = 0.3;
+                el.style.opacity += .1;
+                typeof el.style.opacity === 'string' // A string! "0.3.1"
+              </code>
+            </pre>
+            <div class="fragment">
+              <p>Typed CSSOM</p>
+              <pre>
+                <code  data-trim data-noescape class="language-javascript">
+                  const styleMap = el.attributeStyleMap;
+                  styleMap.set('opacity', 0.3); 
+                  typeof styleMap.get('opacity').value === 'number' // true, 0.3
+                  styleMap.set('opacity', styleMap.get('opacity').value + 0.1) // 0.4
+                </code>
+              </pre>
+            </div>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2>Typed CSSOM</h2>
+          <div class="r-stretch">
+            <pre>
+              <code data-trim data-noescape class="language-javascript">
+                const styleMap = el.attributeStyleMap
+                styleMap.set('margin-top', CSS.px(10));
+                styleMap.set('margin-top', '10px'); // string arg also works.
+                styleMap.get('margin-top').value  // 10
+                styleMap.get('margin-top').unit // 'px'
+
+                // Use CSSKeyWorldValue for plain text values:
+                styleMap.set('display', new CSSKeywordValue('initial'));
+                styleMap.get('display').value // 'initial'
+                styleMap.get('display').unit // undefined
+            </code>
+          </pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2>Typed CSSOM</h2>
+          <div class="r-stretch">
+            <pre>
+              <code data-trim data-noescape class="language-javascript">
+                // Regular CSSOM with CSSStyleDeclaration
+                el.style.opacity = 0.5;
+                window.getComputedStyle(el).opacity === "0.5" 
+
+                //Typed CSSOM with StylePropertyMap
+                el.attributeStyleMap.set('opacity', 0.5);
+                el.computedStyleMap().get('opacity').value // 0.5
+            </code>
+          </pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2>Typed CSSOM</h2>
+          <div class="r-stretch">
+            <ul>
+              <li><kbd>StylePropertyMap</kbd></li>
+              <li><kbd> CSSKeywordValue</kbd></li>
+              <li><kbd> CSSImageValue</kbd></li>
+              <li><kbd> CSSNumericValue</kbd></li>
+              <li><kbd> CSSStyleValue</kbd></li>
+              <li><kbd> CSSPositionValue</kbd></li>
+              <li><kbd> CSSTransformValue</kbd></li>
+              <li><kbd> CSSUnparsedValue</kbd></li>
+            </ul>
+          </div>
+        </section>
+
+        <section data-auto-animate>
+          <h2>CSS Custom Properties</h2>
+        </section>
+        <section
+          data-auto-animate
+          data-background-iframe="https://codepen.io/nonsocode/embed/wvPxoMr?default-tab=css%2Cresult&editable=true"
+        >
+          <h2 style="position: relative; top: calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+        </section>
+        <section
+          data-auto-animate
+          data-background-iframe="https://codepen.io/nonsocode/embed/OJOwbjO?default-tab=css%2Cresult&editable=true"
+        >
+          <h2 style="position: relative; top:calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+        </section>
+        <section
+          data-auto-animate
+          data-background-iframe="https://codepen.io/nonsocode/embed/vYWaZRa?default-tab=css%2Cresult&editable=true"
+        >
+          <h2 style="position: relative; top:calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
