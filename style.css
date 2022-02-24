@@ -1,10 +1,60 @@
+@property --colors {
+  syntax: "<color>#";
+  initial-value: black;
+  inherits: true;
+}
+@property --min-radius {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+@property --max-radius {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+@property --min-opacity {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+@property --max-opacity {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+@property --num-circles {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+@property --curved-lineColor {
+  inherits: true;
+  initial-value: black;
+  syntax: "<color>";
+}
+@property --curved-lineSpread {
+  inherits: true;
+  initial-value: 50;
+  syntax: "<number>";
+}
+@property --curved-lineWidth {
+  inherits: true;
+  initial-value: 3;
+  syntax: "<number>";
+}
+@property --curved-lineHeight {
+  inherits: true;
+  initial-value: 30;
+  syntax: "<number>";
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100vh
+  height: 100vh;
 }
 
 kbd {
@@ -19,3 +69,42 @@ li {
   list-style: none;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  --curved-lineColor: skyblue;
+  --curved-lineSpread: 50;
+  background: paint(curved-line);
+  display: inline-block;
+  padding: 20px;
+}
+.animated-header{
+  transition: --curved-lineSpread .5s ease-out
+}
+.custom-props-header {
+  position: relative;
+  top: calc(-1 * 22vh)!important;
+  font-size: 1rem !important;
+  color: white !important;
+  padding-bottom: 5px;
+  --curved-lineSpread: 3;
+  --curved-lineHeight: 3;
+}
+.paint-header{
+  --curved-lineColor: yellow;
+}
+
+[data-id="code-animation"] {
+  height: 100%
+}
+#app {
+  --colors: gold, plum, skyblue;
+  --min-radius: 10;
+  --max-radius: 75;
+  --min-opacity: 20;
+  --max-opacity: 60;
+  --num-circles: 16;
+
+  background: paint(circles);
+}

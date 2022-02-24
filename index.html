@@ -12,7 +12,9 @@
       <div class="slides">
         <section>
           <h1>CSS Houdini</h1>
-          <small>by Nonso Chukwuogor</small>
+          <div>
+            <small>by Nonso Chukwuogor</small>
+          </div>
           <aside class="notes">Shhh, these are your private notes 📝</aside>
         </section>
 
@@ -29,6 +31,7 @@
           data-background-iframe="https://ishoudinireadyyet.com/"
         ></section>
 
+        <!-- CSS Typed OM Start -->
         <section
           data-auto-animate
           data-background-image="/typed_vs_untyped.png"
@@ -36,7 +39,6 @@
           <h2>Typed CSSOM</h2>
           <div class="r-stretch"></div>
         </section>
-
         <section data-auto-animate>
           <h2>Typed CSSOM</h2>
           <div class="r-stretch">
@@ -112,27 +114,319 @@
             </ul>
           </div>
         </section>
+        <!-- CSS Typed OM End -->
 
+        <!-- CSS Custom Properties Start -->
         <section data-auto-animate>
           <h2>CSS Custom Properties</h2>
+          <p class="fragment">CSS Variables. But ✨✨Better✨✨</p>
+        </section>
+        <section data-auto-animate>
+          <h2 class="animated-header">CSS Custom Properties</h2>
+          <div class="">
+            <p>Register with Javascript</p>
+            <pre><code><script type="text/template">
+                window.CSS.registerProperty({
+                  name: '--my-color',
+                  syntax: '<color>',
+                  inherits: false,
+                  initialValue: 'black',
+                });
+              </script></code></pre>
+          </div>
+          <div class="fragment">
+            <p>Or register in css</p>
+            <pre><code><script type="text/template">
+                @property --my-color {
+                  syntax: '<color>';
+                  inherits: false;
+                  initial-value: 'black';
+                }
+              </script></code></pre>
+          </div>
         </section>
         <section
           data-auto-animate
           data-background-iframe="https://codepen.io/nonsocode/embed/wvPxoMr?default-tab=css%2Cresult&editable=true"
         >
-          <h2 style="position: relative; top: calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+          <h2 class="animated-header custom-props-header">
+            CSS Custom Properties
+          </h2>
         </section>
         <section
           data-auto-animate
           data-background-iframe="https://codepen.io/nonsocode/embed/OJOwbjO?default-tab=css%2Cresult&editable=true"
         >
-          <h2 style="position: relative; top:calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+          <h2 class="animated-header custom-props-header">
+            CSS Custom Properties
+          </h2>
         </section>
         <section
           data-auto-animate
           data-background-iframe="https://codepen.io/nonsocode/embed/vYWaZRa?default-tab=css%2Cresult&editable=true"
         >
-          <h2 style="position: relative; top:calc(-1 * 22vh); font-size: 1rem; color: white">CSS Custom Properties</h2>
+          <h2 class="animated-header custom-props-header">
+            CSS Custom Properties
+          </h2>
+        </section>
+        <section
+          data-auto-animate
+          data-background-iframe="https://codepen.io/nonsocode/embed/YzEjaKx?default-tab=css%2Cresult"
+        >
+          <h2 class="animated-header custom-props-header">
+            CSS Custom Properties
+          </h2>
+        </section>
+
+        <!-- CSS Custom Properties End -->
+
+        <!-- CSS Paint Api Start-->
+        <section data-auto-animate data-background-image="bob_ross.gif">
+          <h2 style="color: white" class="paint-header">CSS Paint API</h2>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="1" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {});
+            </script></code></pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="2-9" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+              });
+            </script></code></pre>
+          </div>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="11" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+                
+                paint(ctx, size, properties, args) {
+                  
+                }
+              });
+            </script></code></pre>
+          </div>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="11" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+
+                static get inputArguments() { return ["<color>", "<number>"]; }
+
+                paint(ctx, size, properties, args) {
+                  
+                }
+              });
+            </script></code></pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="11" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+
+                paint(ctx, size, properties, args) {
+                  
+                }
+              });
+            </script></code></pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape  data-line-numbers="12-15" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+                
+                paint(ctx, size, properties, args) {
+                  const lineWidth = parseInt(properties.get('--curved-lineWidth')) || 3;
+                  const lineHeight = parseInt(properties.get('--curved-lineHeight')) || size.height;
+                  const color = String(properties.get('--curved-lineColor')) || 'black';
+                  const spread = parseInt(properties.get('--curved-lineSpread')) || 50;
+                }
+            
+              });
+            </script></code></pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="17-23" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+                
+                paint(ctx, size, properties, args) {
+                  const lineWidth = parseInt(properties.get('--curved-lineWidth')) || 3;
+                  const lineHeight = parseInt(properties.get('--curved-lineHeight')) || size.height;
+                  const color = String(properties.get('--curved-lineColor')) || 'black';
+                  const spread = parseInt(properties.get('--curved-lineSpread')) || 50;
+            
+                  const offset = (lineHeight < size.height) ? (size.height - lineHeight)  : 0;
+                  const midPoint = lineHeight / 2;
+            
+                  ctx.lineWidth = lineWidth;
+                  ctx.strokeStyle = color;
+                  ctx.beginPath();
+                  ctx.moveTo(0, midPoint + offset);
+                }
+            
+              });
+            </script></code></pre>
+          </div>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="paint-header" class="paint-header">CSS Paint API</h2>
+          <div data-id="code-wrapper" class="r-stretch">
+            <pre
+              data-id="code-animation"
+            ><code data-trim data-noescape data-line-numbers="25-37" class="language-javascript"><script type="text/template">
+              registerPaint("curved-line", class {
+                static get inputProperties() {
+                  return [
+                    "--curved-lineColor",
+                    "--curved-lineSpread",
+                    "--curved-lineWidth",
+                    "--curved-lineHeight",
+                  ];
+                }
+                
+                paint(ctx, size, properties, args) {
+                  const lineWidth = parseInt(properties.get('--curved-lineWidth')) || 3;
+                  const lineHeight = parseInt(properties.get('--curved-lineHeight')) || size.height;
+                  const color = String(properties.get('--curved-lineColor')) || 'black';
+                  const spread = parseInt(properties.get('--curved-lineSpread')) || 50;
+            
+                  const offset = (lineHeight < size.height) ? (size.height - lineHeight)  : 0;
+                  const midPoint = lineHeight / 2;
+            
+                  ctx.lineWidth = lineWidth;
+                  ctx.strokeStyle = color;
+                  ctx.beginPath();
+                  ctx.moveTo(0, midPoint + offset);
+                  
+                  let curStep = spread;
+                  while (curStep < size.width + spread) {
+                    const cp1x = curStep;
+                    const cp1y = (lineHeight * 1.5) + offset;
+                    const cp2x = curStep + spread;
+                    const cp2y = 0 - midPoint + offset;
+                    const x = curStep + spread * 2;
+                    const y = midPoint + offset;
+            
+                    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+                    curStep = curStep + (spread * 3);
+                  }
+                  ctx.stroke();
+                }
+            
+              });
+            </script></code></pre>
+          </div>
+        </section>
+        <section
+          data-background-iframe="https://ishoudinireadyyet.com/"
+        ></section>
+        <section>
+          <h2>Resources</h2>
+          <ul class="r-stretch">
+            <li>
+              <a
+                href="https://www.smashingmagazine.com/2020/03/practical-overview-css-houdini/"
+                >A Practical Overview Of CSS Houdini</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/GoogleChromeLabs/houdini-samples/tree/master/paint-worklet"
+                >Houdini Paint worklet examples</a
+              >
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Houdini">Our beloved MDN</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=sPbpElWAJ68&">CSS will never be the same (Youtube)</a>
+            </li>
+            <li>
+              <a href="https://jakearchibald.com/2020/css-paint-predictably-random/">Creating Predictable randomness in the paint api</a>
+            </li>
+            <li><a href="https://www.youtube.com/watch?v=ALKqavp9Fg0">A Video version of the previous link with a different example 👆🏽</a></li>
+            <li><a href="https://developers.google.com/web/updates/2018/03/cssom">CSS Typed OM</a></li>
+          </ul>
         </section>
       </div>
     </div>
