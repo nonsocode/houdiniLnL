@@ -84,7 +84,7 @@ h4 {
 }
 .custom-props-header {
   position: relative;
-  top: calc(-1 * 22vh)!important;
+  top: calc(-1 * 28vh)!important;
   font-size: 1rem !important;
   color: white !important;
   padding-bottom: 5px;
